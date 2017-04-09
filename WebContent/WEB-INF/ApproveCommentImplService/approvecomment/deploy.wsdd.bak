@@ -1,0 +1,33 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ApproveCommentImplService WSDL service -->
+
+  <service name="ApproveCommentImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://approvecomment"/>
+      <parameter name="wsdlServiceElement" value="ApproveCommentImplService"/>
+      <parameter name="schemaQualified" value="http://approvecomment"/>
+      <parameter name="wsdlServicePort" value="ApproveCommentImpl"/>
+      <parameter name="className" value="approvecomment.ApproveCommentImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ApproveCommentImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="filter" qname="operNS:filter" xmlns:operNS="http://approvecomment" returnQName="retNS:filterReturn" xmlns:retNS="http://approvecomment" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:comment" xmlns:pns="http://approvecomment" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:username" xmlns:pns="http://approvecomment" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getOccurences" qname="operNS:getOccurences" xmlns:operNS="http://approvecomment" returnQName="retNS:getOccurencesReturn" xmlns:retNS="http://approvecomment" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:username" xmlns:pns="http://approvecomment" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="filter getOccurences"/>
+
+  </service>
+</deployment>

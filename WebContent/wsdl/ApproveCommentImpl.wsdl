@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://approvecomment" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://approvecomment" xmlns:intf="http://approvecomment" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://approvecomment" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="filter">
+    <complexType>
+     <sequence>
+      <element name="comment" type="xsd:string"/>
+      <element name="username" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="filterResponse">
+    <complexType>
+     <sequence>
+      <element name="filterReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOccurences">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getOccurencesResponse">
+    <complexType>
+     <sequence>
+      <element name="getOccurencesReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getOccurencesRequest">
+
+      <wsdl:part element="impl:getOccurences" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="filterResponse">
+
+      <wsdl:part element="impl:filterResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="filterRequest">
+
+      <wsdl:part element="impl:filter" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getOccurencesResponse">
+
+      <wsdl:part element="impl:getOccurencesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ApproveCommentImpl">
+
+      <wsdl:operation name="filter">
+
+         <wsdl:input message="impl:filterRequest" name="filterRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:filterResponse" name="filterResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOccurences">
+
+         <wsdl:input message="impl:getOccurencesRequest" name="getOccurencesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getOccurencesResponse" name="getOccurencesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ApproveCommentImplSoapBinding" type="impl:ApproveCommentImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="filter">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="filterRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="filterResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getOccurences">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getOccurencesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getOccurencesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ApproveCommentImplService">
+
+      <wsdl:port binding="impl:ApproveCommentImplSoapBinding" name="ApproveCommentImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/approvecomment/services/ApproveCommentImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
